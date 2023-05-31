@@ -6,10 +6,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Root from './routes/root.jsx';
-import ErrorPage from './error-page.jsx';
-import Contact from './routes/Contacts.jsx';
-import Charts from './routes/Charts';
+
+import { QueryClient,QueryClientProvider } from '@tanstack/react-query';
+import { Root,ChartsAndMaps,Contacts, ErrorPage} from './routes'
+
 
 const router = createBrowserRouter([
   {
@@ -19,18 +19,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "contacts",
-        element: <Contact />,
+        element: <Contacts />,
       },
       {
         path: "charts",
-        element: <Charts />
+        element: <ChartsAndMaps />
       }
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider >
   </React.StrictMode>,
 )
