@@ -12,7 +12,7 @@ export default function CovidMap(){
   const [infoWindowData, setInfoWindowData] = useState<TMapMarker>();
   const [mapRef,setMapRef] = useState<google.maps.Map>()
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process?.env.REACT_APP_GOOGLE_API_KEY || '',
+    googleMapsApiKey: 'AIzaSyB74HnFOasxoeK1GAzUWRZJB5iggJQy54I',
   });
     
   const { data } = useCovidCasesByCountry()
